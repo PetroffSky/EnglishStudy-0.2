@@ -3,7 +3,6 @@ import find_get_image
 import translater
 import gen_qrcode
 import docx_save_print
-import clean_temp_file
 import os, os.path
 import sys
 
@@ -35,14 +34,16 @@ def main():
     docx_save_print.Save_Print()
 
     # Очищаем временные файлы
-    # if os.path.isfile('image.jpg'): os.remove('image.jpg')
-    # if os.path.isfile("Results/translate.txt"): os.remove("Results/translate.txt")
-    # images_folder = r"Results/Images"
-    # for file in os.listdir(images_folder):
-    #     os.remove(os.path.join(images_folder, file))
-    #     print(f"Файл {file} удалён!")
-    # print("Все временные файлы удалены!")
-
+    if os.path.isfile('image.jpg'): 
+        os.remove('image.jpg')
+    if os.path.isfile("Results/translate.txt"): 
+        os.remove("Results/translate.txt")
+        
+    images_folder = r"Results/Images"
+    for file in os.listdir(images_folder):
+        os.remove(os.path.join(images_folder, file))
+        print(f"Файл {file} удалён!")
+    print("Все временные файлы удалены!")
 
 
 
