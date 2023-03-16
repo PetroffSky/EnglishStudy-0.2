@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, ElementClickInterceptedException
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.action_chains import ActionChains
 import time
 import requests
 import shutil
@@ -17,7 +16,6 @@ class Find_Get:
 
         self.link = 'https://yandex.ru/images/search'
         self.get_browser()
-
 
     # Создаём объект браузера с настройками
     def get_browser(self):
@@ -39,7 +37,7 @@ class Find_Get:
         self.browser.get(self.link)
         self.set_settings()
 
-
+    # Производим предварительную настройку страницы поиска картинок
     def set_settings(self):
         print("Настраиваем поиск")
         try:
@@ -61,7 +59,6 @@ class Find_Get:
         print("Поиск изображений настроен")
         self.image_finder()
         print("Все изображения загружены!")
-
 
     # Ищем изображение по слову из списка и получаем ссылку на jpg
     def image_finder(self):
@@ -131,9 +128,9 @@ class Find_Get:
             self.browser.close()
             self.get_browser()
 
-
+    # Проверяем изображение на тип содержимого
     def checking_file(self):
-        print(f"Проверяем доступность файла {self.word} для скачивания.")
+        print(f"\nПроверяем доступность файла {self.word} для скачивания.")
         if not self.url.endswith('.jpg'):
             return False
         elif self.image_downloader():
@@ -156,7 +153,6 @@ class Find_Get:
                 return False
         else:
             return False
-
 
     # Скачиваем изображение и сохраняем его в файл
     def image_downloader(self):
@@ -201,7 +197,6 @@ class Find_Get:
                     print("Такой хост уже есть в чёрном списке.")
                 print(*self.unavailable_hosts)
                 return False
-
 
 
 if __name__ == "__main__":
